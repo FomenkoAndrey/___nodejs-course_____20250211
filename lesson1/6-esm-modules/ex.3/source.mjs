@@ -4,7 +4,4 @@ export const user = {
   age: 25
 }
 
-export const user2 = 123
-export const user3 = 456
-
 console.log('source.mjs')
