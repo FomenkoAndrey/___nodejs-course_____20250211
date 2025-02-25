@@ -1,0 +1,6 @@
+hello
+world
+from
+node.js
+bye bye
+bye
