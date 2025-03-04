@@ -1,4 +1,4 @@
-import { createServer } from 'net'
+import { createServer } from 'node:net'
 
 let id = 0
 let clients = []
@@ -12,13 +12,15 @@ server.on('connection', (socket) => {
 
   socket.on('data', (msg) => {
     clients.forEach((clientSocket, index) => {
-      clientSocket.write(`${index}: `)
-      clientSocket.write(msg)
+      if (clientSocket) {
+        clientSocket.write(`${index}: `)
+        clientSocket.write(msg)
+      }
     })
   })
 
   socket.on('end', () => {
-    clients = clients.filter((clientSocket, index) => index !== socket.id)
+    delete clients[socket.id]
     console.log('Client is disconnected!')
   })
 })

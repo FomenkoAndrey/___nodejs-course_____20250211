@@ -1,6 +1,6 @@
-import { createServer } from 'net'
-import { createReadStream } from 'fs'
-import { pipeline } from 'stream/promises'
+import { createServer } from 'node:net'
+import { createReadStream } from 'node:fs'
+import { pipeline } from 'node:stream/promises'
 
 const server = createServer()
 
@@ -11,7 +11,7 @@ server.on('connection', (socket) => {
 
   socket.on('data', async (msg) => {
     console.log(`Data from client: ${msg}`)
-    socket.write(`${msg.toString()}`)
+    socket.write(`${msg}`)
 
     const readStream = createReadStream('source.txt')
 
