@@ -2,9 +2,8 @@ const fsp = require('fs').promises
 
 const getData = async () => {
   try {
-    const data = await fsp.readFile('test.js')
     await fsp.access('test.js')
-    return data
+    return await fsp.readFile('test.js')
   } catch (error) {
     throw error
   }
